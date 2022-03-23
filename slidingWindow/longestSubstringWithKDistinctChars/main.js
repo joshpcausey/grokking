@@ -36,6 +36,4 @@ const longestSubstringWithKDistinctChars = (input, k) => {
     return maxLength;
 }
 
-console.log(longestSubstringWithKDistinctChars("araaci", 2)) // output 4
-console.log(longestSubstringWithKDistinctChars("araaci", 1)) // output 2
-console.log(longestSubstringWithKDistinctChars("cbbebi", 3)) // output 5
+module.exports = longestSubstringWithKDistinctChars;
