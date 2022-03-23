@@ -9,7 +9,7 @@ const maximumSumOfSubarraySizeK = (input, k) => {
     for(let windowEnd = 0; windowEnd < input.length; windowEnd++) {
         windowSum += input[windowEnd];
 
-        // our window is greater than k so reduce window and remove the left char
+        // our window is greater than k so reduce window and remove the left num
         if(windowEnd - windowStart + 1 > k) {
             windowSum -= input[windowStart];
             windowStart++
