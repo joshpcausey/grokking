@@ -3,7 +3,7 @@ My solutions to grokking as I practice my DS&amp;A
 
 This repo's file structure is as so
 
-Each root level directory is a patern in grokking the coding interview
+Each root level directory is a pattern in grokking the coding interview
 
 Each directory in a root level directory is a problem
 

@@ -1,0 +1,22 @@
+{
+  "name": "grokking",
+  "version": "1.0.0",
+  "description": "a collection of data structure and algorithm problems/solutions",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/joshpcausey/grokking.git"
+  },
+  "author": "Joshua Causey",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/joshpcausey/grokking/issues"
+  },
+  "homepage": "https://github.com/joshpcausey/grokking#readme",
+  "devDependencies": {
+    "jest": "^27.5.1"
+  }
+}

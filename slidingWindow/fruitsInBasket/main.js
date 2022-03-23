@@ -38,5 +38,4 @@ const maxFruits = (fruits) => {
     return maxLength;
 }
 
-console.log(maxFruits(['A', 'B', 'C', 'A', 'C'])) // output 3
-console.log(maxFruits(['A', 'B', 'C', 'B', 'B', 'C'])) // output 5
+module.exports = maxFruits;
