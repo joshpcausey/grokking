@@ -5,14 +5,15 @@ const maximumSumOfSubarraySizeK = (input, k) => {
         windowSum = 0,
         maxSum = -Infinity;
 
+    // open window
     for(let windowEnd = 0; windowEnd < input.length; windowEnd++) {
         windowSum += input[windowEnd];
 
+        // our window is greater than k so reduce window and remove the left char
         if(windowEnd - windowStart + 1 > k) {
             windowSum -= input[windowStart];
             windowStart++
         }
-
 
         maxSum = Math.max(maxSum, windowSum);
     }
