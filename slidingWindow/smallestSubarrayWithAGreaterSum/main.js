@@ -24,6 +24,4 @@ const smallestSubarrayWithAGreaterSum = (input, k) => {
     return minLength;
 }
 
-console.log(smallestSubarrayWithAGreaterSum([2, 1, 5, 2, 3, 2], 7)) // output 2
-console.log(smallestSubarrayWithAGreaterSum([2, 1, 5, 2, 8], 7)) // output 1
-console.log(smallestSubarrayWithAGreaterSum([3, 4, 1, 1, 6], 8)) // output 3
+module.exports = smallestSubarrayWithAGreaterSum;
