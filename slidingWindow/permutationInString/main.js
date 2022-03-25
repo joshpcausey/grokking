@@ -10,39 +10,39 @@
 
 const hasPermutation = (input, pattern) => {
     let windowStart = 0,
-        freqMap = {},
+        charFreqCounter = {},
         matched = 0;
 
     for(let i = 0; i < pattern.length; i++){
         const char = pattern[i];
-        if(!(char in freqMap)) {
-            freqMap[char] = 0
+        if(!(char in charFreqCounter)) {
+            charFreqCounter[char] = 0;
         }
-        freqMap[char]++;
+        charFreqCounter[char]++;
     }
 
     for(let windowEnd = 0; windowEnd < input.length; windowEnd++) {
         const rightChar = input[windowEnd];
 
-        if(rightChar in freqMap){
-            freqMap[rightChar]--;
-            if(freqMap[rightChar] === 0){
-                matched++
+        if(rightChar in charFreqCounter) {
+            charFreqCounter[rightChar]--;
+            if(charFreqCounter[rightChar] === 0){
+                matched++;
             }
         }
 
-        if(Object.keys(freqMap).length === matched) {
+        if(matched === Object.keys(pattern).length){
             return true;
         }
 
-        if(windowEnd >= pattern.length - 1) {
+        if(windowEnd - windowStart >= pattern.length - 1) {
             const leftChar = input[windowStart];
             windowStart++;
-            if(leftChar in freqMap) {
-                if(freqMap[leftChar] === 0) {
-                    matched--;
+            if(leftChar in charFreqCounter){
+                if(charFreqCounter[leftChar] === 0) {
+                    matched ++
                 }
-                freqMap[leftChar]++;
+                charFreqCounter[leftChar]++;
             }
         }
     }
