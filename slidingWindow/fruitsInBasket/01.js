@@ -3,33 +3,26 @@
 // Each basket can have only one type of fruit. There is no limit to how many fruit a basket can hold.
 // You can start with any tree, but you can’t skip a tree once you have started.
 // You will pick exactly one fruit from every tree until you cannot, i.e., you will stop when you have to pick from a third fruit type.
-// Write a function to return the maximum number of fruits in both baskets.
+//Write a function to return the maximum number of fruits in both baskets.
 
-const maxFruits = (fruits) => {
+const maxNumberOfFruits = (fruits) => {
     let windowStart = 0,
-        fruitHashMap = {},
+        hashMap = {},
         maxLength = -Infinity;
 
-    // open window
     for(let windowEnd = 0; windowEnd < fruits.length; windowEnd++) {
         const rightFruit = fruits[windowEnd];
-
-        // add each fruit to hashmap/count occurrences
-        if(!(rightFruit in fruitHashMap)) {
-            fruitHashMap[rightFruit] = 0;
+        if(!(rightFruit in hashMap)) {
+            hashMap[rightFruit] = 0;
         }
-        fruitHashMap[rightFruit]++;
+        hashMap[rightFruit]++;
 
-        // fruitHashMap has more keys than our allowed 2 baskets, begin shrinking window
-        while(Object.keys(fruitHashMap).length > 2) {
+        while(Object.keys(hashMap).length > 2) {
             const leftFruit = fruits[windowStart];
-
-            // remove beginning of window's fruit. Ensure to delete the key if there's none left
-            fruitHashMap[leftFruit]--;
-            if(fruitHashMap[leftFruit] === 0) {
-                delete fruitHashMap[leftFruit];
+            hashMap[leftFruit]--;
+            if(hashMap[leftFruit] === 0) {
+                delete hashMap[leftFruit];
             }
-
             windowStart++;
         }
 
@@ -39,4 +32,5 @@ const maxFruits = (fruits) => {
     return maxLength;
 }
 
-module.exports = maxFruits;
+console.log(maxNumberOfFruits(['A', 'B', 'C', 'A', 'C'])) // output 3
+console.log(maxNumberOfFruits(['A', 'B', 'C', 'B', 'B', 'C'])) // output 5
