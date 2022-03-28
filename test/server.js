@@ -1,36 +1,31 @@
-// the question was, give a list of prices. return the first index of the longest continuous subsequence with no more than 2 distinct prices
-
-const longestSubequence = (input, k) => {
+var findRepeatedDnaSequences = function(s) {
     let windowStart = 0,
-        freqMap = {},
-        maxLength = 0,
-        maxIdx = -1;
-
-    for(windowEnd = 0; windowEnd < input.length; windowEnd++) {
-        rightNum = input[windowEnd];
-
-        if(!(rightNum in freqMap)) {
-            freqMap[rightNum] = 0
+        hashMap = {},
+        sequences = [];
+    
+    for(let windowEnd = 0; windowEnd < s.length; windowEnd++) {
+        const rightChar = s[windowEnd];
+        if(!(rightChar in hashMap)) {
+            hashMap[rightChar] = 0;
         }
-        freqMap[rightNum]++;
-
-        while(Object.keys(freqMap).length > k) {
-            const leftNum = input[windowStart];
-            freqMap[leftNum]--;
-            if(freqMap[leftNum] === 0) {
-                delete freqMap[leftNum];
+        hashMap[rightChar]++;
+        
+        while(Object.keys(hashMap).length > 2) {
+            const leftChar = s[windowStart];
+            hashMap[leftChar]--;
+            if(hashMap[leftChar] === 0) {
+                delete hashMap[leftChar];
             }
-            windowStart++
+            windowStart++;
         }
-
-        if(windowEnd - windowStart + 1 > maxLength) {
-            maxLength = windowEnd - windowStart + 1;
-            maxIdx = windowStart;
+        
+        if(windowEnd - windowStart + 1 >= 10) {
+            sequences.push(s.substring(windowStart, windowEnd));
+            windowStart = windowEnd;
         }
-
     }
+    
+    return sequences;
+};
 
-    return maxIdx
-}
-
-console.log(longestSubequence([100,101,101,101,102,102,103], 2)) // return 1
+console.log(findRepeatedDnaSequences("AAAAACCCCCAAAAACCCCCCAAAAAGGGTTT")) // output ["AAAAACCCCC","CCCCCAAAAA"]

@@ -11,16 +11,6 @@ const longestSubstringWithDistinctChars = (input) => {
             windowStart = Math.max(windowStart, charIdxMap[rightChar] + 1);
         }
 
-
-
-
-
-
-
-
-
-        
-
         charIdxMap[rightChar] = windowEnd;
 
         maxLength = Math.max(maxLength, windowEnd - windowStart + 1);
